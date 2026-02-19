@@ -4,9 +4,10 @@ type Props = {
   pos: Pos;
   boardSize: number;
   cellSize: number;
+  colorProp: boolean;
 };
 
-export function GameBoard({ pos, boardSize, cellSize }: Props) {
+export function GameBoard({ pos, boardSize, cellSize, colorProp }: Props) {
   return (
     <div
       style={{
@@ -20,7 +21,7 @@ export function GameBoard({ pos, boardSize, cellSize }: Props) {
           position: "absolute",
           width: cellSize,
           height: cellSize,
-          background: "red",
+          background: colorProp ? "blue" : "red",
           transform: `translate(${pos.x * cellSize}px, ${pos.y * cellSize}px)`,
           transition: "transform 0.1s linear",
         }}

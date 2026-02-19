@@ -4,9 +4,10 @@ type Props = {
   onDown: () => void;
   onLeft: () => void;
   onRight: () => void;
+  changeColor: () => void;
 };
 
-export function Gamepad({ onUp, onDown, onLeft, onRight }: Props) {
+export function Gamepad({ onUp, onDown, onLeft, onRight, changeColor}: Props) {
   return (
     <div className="buttonContainer">
       <div>
@@ -18,6 +19,11 @@ export function Gamepad({ onUp, onDown, onLeft, onRight }: Props) {
         <button onClick={onDown}>↓</button>
         <button onClick={onRight}>→</button>
       </div>
+
+    
+        <button  onClick={changeColor}>
+        changeColor
+        </button>
     </div>
   );
 }
