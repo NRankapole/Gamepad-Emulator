@@ -8,6 +8,13 @@ type Props = {
 
 export function GameBoard({ pos, boardSize, cellSize }: Props) {
   return (
-   
+    <div
+      style={{
+        width: boardSize * cellSize,
+        height: boardSize * cellSize,
+        border: "1px solid black",
+      }}
+    >
+    </div>
   );
 }

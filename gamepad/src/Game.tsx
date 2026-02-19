@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GameBoard } from "./components/Gameboard/Gameboard";
 import { Gamepad } from "./components/Gamepad/Gamepad";
-
+import "./Game.scss"
 export type Pos = {
   x: number;
   y: number;
@@ -27,7 +27,7 @@ export default function Game() {
   }
 
   return (
-    <div>
+    <div className="gameContainer">
       <GameBoard pos={pos} boardSize={BOARD_SIZE} cellSize={CELL_SIZE} />
 
       <Gamepad

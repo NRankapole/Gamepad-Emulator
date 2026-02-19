@@ -1,3 +1,4 @@
+import "./Gamepad.scss"
 type Props = {
   onUp: () => void;
   onDown: () => void;
@@ -7,7 +8,7 @@ type Props = {
 
 export function Gamepad({ onUp, onDown, onLeft, onRight }: Props) {
   return (
-    <div style={{ marginTop: 20 }}>
+    <div className="buttonContainer">
       <div>
         <button onClick={onUp}>↑</button>
       </div>
