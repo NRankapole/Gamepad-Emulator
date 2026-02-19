@@ -15,6 +15,16 @@ export function GameBoard({ pos, boardSize, cellSize }: Props) {
         border: "1px solid black",
       }}
     >
+        <div
+        style={{
+          position: "absolute",
+          width: cellSize,
+          height: cellSize,
+          background: "red",
+          transform: `translate(${pos.x * cellSize}px, ${pos.y * cellSize}px)`,
+          transition: "transform 0.1s linear",
+        }}
+      />
     </div>
   );
 }
