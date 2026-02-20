@@ -1,5 +1,4 @@
 import type { Pos } from "../../Game"
-
 type Props = {
   pos: Pos;
   boardSize: number;
@@ -14,6 +13,8 @@ export function GameBoard({ pos, boardSize, cellSize, colorProp }: Props) {
         width: boardSize * cellSize,
         height: boardSize * cellSize,
         border: "1px solid black",
+        borderRadius: "1rem",
+        background: "#2AFC98",
       }}
     >
         <div
@@ -21,7 +22,8 @@ export function GameBoard({ pos, boardSize, cellSize, colorProp }: Props) {
           position: "absolute",
           width: cellSize,
           height: cellSize,
-          background: colorProp ? "blue" : "red",
+          background: colorProp ? "#09E85E" : "#214F4B",
+           borderRadius: "1rem",
           transform: `translate(${pos.x * cellSize}px, ${pos.y * cellSize}px)`,
           transition: "transform 0.1s linear",
         }}

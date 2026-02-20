@@ -1,7 +1,22 @@
+
 .gameContainer{
     padding-top: 2rem;
     justify-self: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
+
+
+
+body{
+    text-align: center;
+    background-color: #2DE1FC;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    color: black;
 }

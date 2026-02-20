@@ -1,6 +1,7 @@
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import { GameBoard } from "./components/Gameboard/Gameboard";
 import { Gamepad } from "./components/Gamepad/Gamepad";
+
 import "./Game.scss"
 export type Pos = {
   x: number;
@@ -16,29 +17,70 @@ export default function Game() {
 
 
   //shamelessly from https://www.w3schools.com/graphics/game_movement.asp
-  function moveUp() {
-    setPos({ x: pos.x, y: Math.max(0, pos.y - 1) });
-  }
+ function moveUp() {
+  setPos((prev) => ({
+    x: prev.x,
+    y: Math.max(0, prev.y - 1),
+  }));
+}
 
-  function moveDown() {
-    setPos({ x: pos.x, y: Math.min(BOARD_SIZE - 1, pos.y + 1) });
-  }
+function moveDown() {
+  setPos((prev) => ({
+    x: prev.x,
+    y: Math.min(BOARD_SIZE - 1, prev.y + 1),
+  }));
+}
 
-  function moveLeft() {
-    setPos({ x: Math.max(0, pos.x - 1), y: pos.y });
-  }
+function moveLeft() {
+  setPos((prev) => ({
+    x: Math.max(0, prev.x - 1),
+    y: prev.y,
+  }));
+}
 
-  function moveRight() {
-    setPos({ x: Math.min(BOARD_SIZE - 1, pos.x + 1), y: pos.y });
-  }
-  
+function moveRight() {
+  setPos((prev) => ({
+    x: Math.min(BOARD_SIZE - 1, prev.x + 1),
+    y: prev.y,
+  }));
+}
   function handleChange() {
     setChangeColor((state) => !state);
   }
- 
+  
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      switch (event.key) {
+        case "ArrowUp":
+          moveUp();
+          break;
+        case "ArrowDown":
+          moveDown();
+          break;
+        case "ArrowLeft":
+          moveLeft();
+          break;
+        case "ArrowRight":
+          moveRight();
+          break;
+        case " ":
+          handleChange(); 
+          break;
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
+   <>
+    <h1>Grid Game</h1>
     <div className="gameContainer">
+      
       <GameBoard pos={pos} boardSize={BOARD_SIZE} cellSize={CELL_SIZE} colorProp={changeColor} />
 
       <Gamepad
@@ -49,5 +91,6 @@ export default function Game() {
         changeColor={handleChange}
       />
     </div>
+   </>
   );
 }
